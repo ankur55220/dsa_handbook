@@ -1,0 +1,39 @@
+# Week 4 Reflection
+
+Biggest breakthrough
+
+I stopped looking for graphs and started looking for state machines.
+
+---
+
+Most surprising realization
+
+The graph often doesn't exist explicitly.
+It is generated from the transition function.
+
+---
+
+Mistake I kept making
+
+Confusing logical state with implementation representation.
+
+---
+
+Engineering habit developed
+
+Before searching,
+ask if I should reorganize the data first.
+
+---
+
+Confidence (1-10)
+
+State Discovery: 8
+
+Representation: 7
+
+Transition Functions: 8
+
+Architecture Selection: 7
+
+Overall: 8

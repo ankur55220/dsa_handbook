@@ -1,4 +1,40 @@
+# week 2
+Initial Thinking
+
+State = Current Position
+
+↓
+
+Counterexample
+
+Different futures
+
+↓
+
+Discovery
+
+State must include every piece of information that affects the future.
+
+# week 3
+
+Initial Thinking
+
+Problems are single algorithms.
+
+↓
+
+Discovery
+
+Many problems are cooperating architectures.
+
+↓
+
+General Principle
+
+Decompose before solving.
+
 # Week 4
+
 
 ## Race Car
 
