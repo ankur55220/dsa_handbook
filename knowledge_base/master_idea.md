@@ -855,3 +855,177 @@ Chapter 2
 ## Last Updated
 
 Week 4
+
+Idea 030
+
+Capability vs Search Value
+
+Status
+
+Growing
+
+Introduced
+
+Week 5
+
+Summary
+
+Capability determines future legal actions.
+Search Value measures how good a path currently is.
+
+Idea 021
+
+Resource-Augmented State
+
+Status
+
+Growing
+
+Introduced
+
+Obstacle Elimination
+
+Summary
+
+If acquiring or consuming a resource changes future decisions,
+that resource belongs in the state.
+
+Idea 022
+
+Objective vs Constraint
+
+Status
+
+Growing
+
+Introduced
+
+Cheapest Flights
+
+Summary
+
+Never confuse what is being optimized with what limits feasible solutions.
+
+Idea 023
+
+Identity vs Quantity
+
+Status
+
+Growing
+
+Introduced
+
+Shortest Path to Get All Keys
+
+Summary
+
+Sometimes knowing "how many" resources exist is insufficient.
+Future behavior depends on "which" resources exist.
+
+Idea 023
+
+Set Dominance
+
+Status
+
+Growing
+
+Introduced
+
+Shortest Path to Get All Keys
+
+Summary
+
+For set-valued state,
+dominance only exists when one state's set is a superset of another.
+
+Idea 024
+
+Minimal Complete State
+
+Status
+
+Growing
+
+Introduced
+
+Shortest Path in Binary Matrix
+
+Summary
+
+A state should contain exactly the information required to determine every future decision.
+Nothing more.
+Nothing less.
+
+Idea 025
+
+Path Value Propagation
+
+Status
+
+Growing
+
+Introduced
+
+Swim in Rising Water
+
+Summary
+
+Every optimization problem propagates its search value differently.
+
+Examples:
+
++
+
+max()
+
+min()
+
+bitwise OR
+
+union
+
+Idea 026
+
+State Finalization
+
+Status
+
+Growing
+
+Introduced
+
+Week 5
+
+Summary
+
+Every traversal has a point where a state becomes mathematically final.
+
+BFS
+
+↓
+
+Discovery
+
+Dijkstra
+
+↓
+
+Pop
+
+Idea 027
+
+Algorithm Discovery vs Recognition
+
+Status
+
+Growing
+
+Introduced
+
+Week 5
+
+Summary
+
+Algorithms should emerge from invariants rather than be recognized by pattern matching.
