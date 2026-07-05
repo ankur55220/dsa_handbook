@@ -103,4 +103,58 @@ Different constraints.
 
 Engineering Decision
 
-Generate neighbors instead of wildcard preprocessing.
+Generate neighbors instead of wildcard preprocessing
+
+# Week 5
+
+## Biggest Evolution
+
+Before
+
+I viewed state as simply extra information.
+
+After
+
+I distinguish between
+
+- State
+- Search Value
+- Capability
+- Constraint
+
+and understand that each serves a different purpose.
+
+---
+
+## Biggest Discovery
+
+Future equivalence determines state.
+
+Not implementation.
+
+---
+
+## Biggest Mistake Fixed
+
+Not every optimization value belongs in the state.
+
+---
+
+## Engineering Principle Learned
+
+Traversal guarantees determine storage.
+
+visited[state]
+
+vs
+
+bestValue[state]
+
+is derived mathematically rather than memorized.
+
+---
+
+## Personal Milestone
+
+For the first time I independently derived Prim's Algorithm
+without recognizing it by name.
