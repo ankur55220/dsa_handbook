@@ -1,0 +1,137 @@
+# Week 5
+
+Theme
+
+Resource-Augmented State
+
+Goal
+
+Separate
+
+State
+
+Capability
+
+Search Value
+
+Constraint
+
+while learning when dominance exists.
+
+#################################################################################
+
+Problem 1
+
+Obstacle Elimination
+
+Biggest Discovery
+
+Remaining eliminations are capability, not search value.
+
+State
+
+(row,col,remaining)
+
+Search Value
+
+steps
+
+Storage
+
+visited[row][col][remaining]
+
+Engineering Lesson
+
+Resources that change future reachability belong in the state.
+
+Problem 2
+
+Cheapest Flights
+
+Biggest Discovery
+
+Search Value and State are different.
+
+State
+
+(city,stops)
+
+Search Value
+
+cost
+
+Storage
+
+bestCost[city][stops]
+
+Engineering Lesson
+
+Traversal no longer guarantees optimality, therefore bestValue is required.
+
+Problem 3
+
+Shortest Path to Get All Keys
+
+Biggest Discovery
+
+Identity matters more than quantity.
+
+State
+
+(row,col,keyMask)
+
+Search Value
+
+steps
+
+Storage
+
+visited[row][col][mask]
+
+Engineering Lesson
+
+Bitmask is a representation of capability.
+
+Problem 4
+
+Shortest Path in Binary Matrix
+
+Biggest Discovery
+
+Sometimes position alone is a complete state.
+
+Engineering Lesson
+
+Never add unnecessary state.
+
+Problem 5
+
+Swim in Rising Water
+
+Biggest Discovery
+
+Path value is propagated using max(), not addition.
+
+Engineering Lesson
+
+Optimization functions differ even when traversal appears similar.
+
+Bonus Discovery
+
+Independently rediscovered Prim's Algorithm.
+
+Problem 6
+
+Race Car (Revisited)
+
+Biggest Discovery
+
+State and search value are independent concepts.
+
+Engineering Lesson
+
+Revisiting old problems reveals conceptual growth better than solving new ones.
+
+Week Summary
+
+This week transformed graph problems from algorithm-recognition exercises into state-analysis exercises.
