@@ -1,0 +1,503 @@
+# State Engineering
+
+> "A state is not data you carry. A state is the minimum information required to uniquely determine every future decision."
+
+---
+
+# Why State Exists
+
+Many optimization problems explode because multiple execution paths eventually reach situations that are fundamentally identical.
+
+Instead of solving these identical situations repeatedly, we represent them using a **state**.
+
+The purpose of state is to uniquely describe the future.
+
+---
+
+# Definition
+
+A **State** is the minimum complete information required to determine every future legal decision from the current point onward.
+
+It is **not**
+
+- the entire history
+- the path taken
+- the answer accumulated so far
+
+It is only the information that changes the future.
+
+---
+
+# Fundamental Principle
+
+Whenever solving a problem, ask:
+
+> "If I remove this piece of information, will the future become different?"
+
+If YES
+
+↓
+
+It belongs in the state.
+
+If NO
+
+↓
+
+It does not belong in the state.
+
+---
+
+# State vs Search Value
+
+This is one of the most important distinctions.
+
+## State
+
+Determines future possibilities.
+
+Examples
+
+- Position
+- Speed
+- Remaining Fuel
+- Keys Owned
+- Stops Used
+
+---
+
+## Search Value
+
+Measures how good the current path is.
+
+Examples
+
+- Steps
+- Cost
+- Time
+- Probability
+
+Search Value does **not** automatically belong in the state.
+
+---
+
+# Capability
+
+Some information changes what actions are legal.
+
+This information is called a capability.
+
+Examples
+
+- Keys
+- Fuel
+- Remaining obstacle eliminations
+- Permissions
+- Energy
+
+If acquiring or consuming something changes future reachability,
+
+it belongs in the state.
+
+---
+
+# Resource Types
+
+## Consumable Resources
+
+Examples
+
+- Fuel
+- Obstacle Eliminations
+
+The amount decreases over time.
+
+State Example
+
+(row,col,remainingFuel)
+
+---
+
+## Persistent Resources
+
+Examples
+
+- Keys
+- Permissions
+
+Once acquired,
+
+they remain forever.
+
+State Example
+
+(row,col,keyMask)
+
+---
+
+# Identity vs Quantity
+
+Sometimes
+
+the future depends on
+
+"which"
+
+resources exist,
+
+not
+
+"how many."
+
+Example
+
+Keys
+
+Incorrect
+
+NumberOfKeys = 3
+
+Correct
+
+{A,C,F}
+
+Identity determines future behavior.
+
+---
+
+# State Audit
+
+After proposing a candidate state,
+
+perform this test.
+
+Imagine two executions reaching the same candidate state.
+
+Ask
+
+> "Can they have different futures?"
+
+If YES
+
+↓
+
+State is incomplete.
+
+If NO
+
+↓
+
+State is complete.
+
+This is the most important correctness test.
+
+---
+
+# Minimal Complete State
+
+A good state satisfies two conditions.
+
+## Complete
+
+Contains everything needed to determine the future.
+
+---
+
+## Minimal
+
+Contains nothing unnecessary.
+
+Never optimize for the smallest state.
+
+Optimize for the **minimum complete state**.
+
+---
+
+# Dominance
+
+Sometimes two executions reach the same state.
+
+If one execution is always better,
+
+the other can be safely discarded.
+
+Dominance must always be proven.
+
+Never assumed.
+
+---
+
+## Total Dominance
+
+Example
+
+Obstacle Elimination
+
+Remaining
+
+5
+
+dominates
+
+Remaining
+
+2
+
+because every future path available to the second execution is also available to the first.
+
+---
+
+## Partial Dominance
+
+Example
+
+Cheapest Flights
+
+(city,stops)
+
+Lower cost alone does not dominate.
+
+Stops must also match.
+
+---
+
+## Set Dominance
+
+Example
+
+Keys
+
+{A,B,C}
+
+dominates
+
+{A,B}
+
+because every lock that can be opened by the smaller set can also be opened by the larger set.
+
+---
+
+## No Dominance
+
+Different futures.
+
+Example
+
+Race Car
+
+(position=7,speed=+8)
+
+(position=7,speed=-8)
+
+Future actions differ.
+
+Neither execution dominates.
+
+---
+
+# State Compression
+
+Sometimes the state can be represented more efficiently.
+
+Examples
+
+Key Set
+
+↓
+
+Bitmask
+
+Coordinates
+
+↓
+
+Index
+
+Characters
+
+↓
+
+Integer IDs
+
+Compression changes representation.
+
+It must never change meaning.
+
+---
+
+# Storage Strategy
+
+Storage depends on the traversal guarantee.
+
+---
+
+## visited[state]
+
+Use when the traversal guarantees the first visit is optimal.
+
+Examples
+
+- BFS
+- Multi-source BFS
+
+---
+
+## bestValue[state]
+
+Use when a better path may still appear later.
+
+Examples
+
+- Dijkstra
+- Bellman-Ford
+- Dynamic Programming
+
+---
+
+# State Finalization
+
+Every traversal has a point where a state becomes final.
+
+## BFS
+
+Finalized when discovered.
+
+Reason
+
+Every edge has equal weight.
+
+---
+
+## Dijkstra
+
+Finalized when popped.
+
+Reason
+
+A cheaper path may still exist before extraction.
+
+---
+
+# Engineering Process
+
+When discovering state, follow this order.
+
+Optimization
+
+↓
+
+Information that survives
+
+↓
+
+Candidate State
+
+↓
+
+State Audit
+
+↓
+
+Dominance
+
+↓
+
+Compression
+
+↓
+
+Traversal
+
+↓
+
+Storage
+
+↓
+
+Implementation
+
+---
+
+# Common Mistakes
+
+❌ Putting Search Value inside the state
+
+❌ Forgetting capability
+
+❌ Adding unnecessary dimensions
+
+❌ Compressing state incorrectly
+
+❌ Assuming dominance without proof
+
+❌ Choosing storage before proving traversal guarantees
+
+---
+
+# Recognition Signals
+
+You probably need additional state when:
+
+- Future legal moves depend on acquired resources.
+- Previous decisions change future possibilities.
+- Two executions reaching the same location behave differently.
+- A path carries information that affects future actions.
+
+Position alone is usually **not** enough.
+
+---
+
+# Problems That Introduced These Ideas
+
+Week 2
+
+- Stock Problems
+- Cherry Pickup
+
+Week 4
+
+- Race Car
+- Sliding Puzzle
+
+Week 5
+
+- Shortest Path with Obstacle Elimination
+- Cheapest Flights Within K Stops
+- Shortest Path to Get All Keys
+- Shortest Path in Binary Matrix
+- Swim in Rising Water
+
+---
+
+# Related Chapters
+
+- Problem Architecture Framework
+- Generated Graphs
+- State Machines
+- Sliding Window (Week 6)
+- Dependency Systems (Week 9)
+
+---
+
+# Evolution
+
+Week 2
+
+Discovered that future decisions define state.
+
+Week 4
+
+Learned to engineer state for generated graphs.
+
+Week 5
+
+Separated
+
+- State
+- Capability
+- Search Value
+- Constraint
+
+and learned to mathematically prove dominance and choose storage based on traversal guarantees.
+
+This chapter will continue evolving throughout the handbook.
