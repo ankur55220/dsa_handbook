@@ -99,39 +99,73 @@ Every future chapter expands one part of this architecture.
 
 ## Contents
 
-### Part I — Problem Solving Foundation
+```
+dsa_handbook/
+│
+├── README.md
+│
+├── 01_Problem_Solving_Foundation/
+│   ├── 01_Problem_Architecture.md
+│   ├── 02_Output_Classification.md
+│   ├── 03_Control_Engines.md
+│   ├── 04_Engineering_Pipeline.md
+│   └── 05_Problem_Architecture_Checklist.md
+│
+├── 02_State_Engineering/
+│   ├── 01_State_Discovery.md
+│   ├── 02_State_Representation.md
+│   ├── 03_State_Architecture.md
+│   ├── 04_Dominance.md
+│   ├── 05_State_Space_Engineering.md
+│   └── 06_State_Case_Studies.md
+│
+├── 03_Invariant_Engineering/
+│   ├── 01_Invariant_Fundamentals.md
+│   ├── 02_Variable_Window.md
+│   ├── 03_Fixed_Window.md
+│   ├── 04_Budget_Invariants.md
+│   ├── 05_Range_Invariants.md
+│   ├── 06_Representation_Engineering.md
+│   ├── 07_Monotonic_Representations.md
+│   └── 08_Invariant_Case_Studies.md
+│
+├── 04_Dependency_Engineering/
+│   ├── 01_Dependency_Graphs.md
+│   ├── 02_Topological_Thinking.md
+│   ├── 03_DAG_Optimization.md
+│   ├── 04_Contribution_Thinking.md
+│   └── 05_Dependency_Case_Studies.md
+│
+├── 05_Optimization_Engineering/
+│   ├── 01_Search_Optimization.md
+│   ├── 02_DP_Optimization.md
+│   ├── 03_Greedy_Optimization.md
+│   └── 04_Mixed_Architectures.md
+│
+├── 06_Master_Ideas/
+│   └── Master_Ideas.md
+│
+├── 07_Case_Studies/
+│   ├── Graphs/
+│   ├── Sliding_Window/
+│   ├── DP/
+│   ├── Trees/
+│   └── Mixed/
+│
+├── 08_Checklists/
+│   ├── Problem_Checklist.md
+│   ├── State_Checklist.md
+│   ├── Invariant_Checklist.md
+│   ├── Dependency_Checklist.md
+│   └── Interview_Checklist.md
+│
+├── 09_Evolution/
+│   └── Evolution_Log.md
+│
+└── legacy/
+```
 
-How to decompose an unknown problem.
-
----
-
-### Part II — State Engineering
-
-How to discover the information that determines future decisions.
-
----
-
-### Part III — Invariant Engineering
-
-How to design and maintain correctness while processing data.
-
----
-
-### Part IV — Dependency Engineering
-
-How dependencies create execution order.
-
----
-
-### Part V — Optimization Patterns
-
-How reusable optimization ideas appear across multiple problem families.
-
----
-
-### Part VI — Master Ideas
-
-The reusable concepts that appear across every chapter.
+Every directory represents one layer of the handbook architecture. The `legacy/` directory preserves earlier material while the numbered sections define the canonical learning path.
 
 ---
 
